@@ -1,0 +1,21 @@
+# Email Configuration
+EMAIL_ENABLED=true
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SENDER_EMAIL=your-email@gmail.com
+SENDER_PASSWORD=your-app-password
+EMAIL_RECIPIENTS=recipient1@email.com,recipient2@email.com
+USE_TLS=true
+
+# SMS Configuration (Twilio)
+SMS_ENABLED=false
+TWILIO_ACCOUNT_SID=your-account-sid
+TWILIO_AUTH_TOKEN=your-auth-token
+TWILIO_PHONE_NUMBER=+1234567890
+SMS_RECIPIENTS=+1234567890,+0987654321
+
+# Notification Settings
+FIRE_CONFIDENCE_THRESHOLD=0.7
+ALERT_COOLDOWN_MINUTES=5
+INCLUDE_IMAGE=true
+MAX_IMAGE_SIZE_MB=5.0

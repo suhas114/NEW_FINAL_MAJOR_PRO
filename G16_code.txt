@@ -1,0 +1,65 @@
+#define BLYNK_TEMPLATE_ID "TMPLkOtFt5y-"
+#define BLYNK_TEMPLATE_NAME "fdc98"
+#define BLYNK_AUTH_TOKEN "WyHXrQ1dtwD70iYLRCqTSvcKJ-OYpCC2"
+#define BLYNK_PRINT Serial
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+char auth[] = "WyHXrQ1dtwD70iYLRCqTSvcKJ-OYpCC2";
+char ssid[] = "abcd";
+char pass[] = "zxcvbnm11";
+
+BlynkTimer timer;
+
+#define fire 18
+#define buzzer  14
+int fire_Val = 0;
+
+WidgetLED led(V1);
+
+void setup() //Setup function - only function that is run in deep sleep mode
+{
+  Serial.begin(9600); //Start the serial output at 9600 baud
+  pinMode(fire, INPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(19, OUTPUT);
+  pinMode(2, OUTPUT);
+  Blynk.begin(auth, ssid, pass);//Splash screen delay
+  delay(2000);
+  timer.setInterval(500L, mySensor);
+}
+
+void loop() //Loop function
+{
+  Blynk.run();
+  timer.run();
+}
+void mySensor()
+{
+  fire_Val = digitalRead(fire);
+   
+  if (fire_Val == LOW)
+  {
+    digitalWrite(buzzer, HIGH);
+    digitalWrite(2, HIGH);
+    digitalWrite(19, LOW);
+    Blynk.virtualWrite(V0, 1);
+    Blynk.notify("Fire detected!");
+    Blynk.email("9663890904u@gmail.com","Alert","Fire detected!!");
+    Blynk.logEvent("fire_alert");
+    Serial.println("FIRE DETECTED!!");
+    led.on();
+  }
+
+  else
+  {
+    digitalWrite(buzzer, LOW);
+    digitalWrite(2, LOW);
+    digitalWrite(19, HIGH);
+    Blynk.virtualWrite(V0, 0);
+    Serial.println("NO FIRE DETECTED!!");
+    led.off();
+  }  
+}
