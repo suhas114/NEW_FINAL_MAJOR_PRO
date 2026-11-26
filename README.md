@@ -14,8 +14,8 @@ This project implements a forest fire detection system using the YOLOv8 deep lea
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
-cd forest-fire-detection
+git clone https://github.com/suhas114/NEW_FINAL_MAJOR_PRO.git
+cd NEW_FINAL_MAJOR_PRO
 ```
 
 2. Install the required dependencies:
