@@ -30,13 +30,13 @@ pip install -r requirements.txt
 Run the default detection script using your webcam:
 
 ```bash
-python forest_fire_detection.py
+python forest_fire_prediction.py
 ```
 
 ### Using the ForestFireDetector Class
 
 ```python
-from forest_fire_detection import ForestFireDetector
+from forest_fire_prediction import ForestFireDetector
 
 # Initialize detector
 detector = ForestFireDetector()
